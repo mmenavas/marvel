@@ -1,0 +1,13 @@
+marvel.settings:
+  type: config_object
+  label: 'Marvel Settings'
+  mapping:
+    gateway:
+      type: string
+      label: 'Service Endpoint'
+    public_key:
+      type: string
+      label: 'Public Key'
+    private_key:
+      type: string
+      label: 'Private Key'

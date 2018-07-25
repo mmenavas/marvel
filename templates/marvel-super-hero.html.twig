@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Default theme implementation to display a Marvel super hero.
+ *
+ * Available variables:
+ * - id
+ * - name
+ * - description
+ * - thumbnail: A URL.
+ *
+ */
+#}
+{% if id is empty %}
+  <div><p>No results were found.</p></div>
+{% else %}
+  <div class="super-hero">
+    <div class="super-hero__name">
+      <h2>{{ name }}</h2>
+    </div>
+    <div class="super-hero__image">
+      <img width="300px" src="{{ thumbnail }}" alt="{{ name }}'s thumbnail image" />
+    </div>
+    <div class="super-hero__description">
+      {{ description }}
+    </div>
+  </div>
+{% endif %}
+  <div>
+    <a href="/marvel/search" title="Go back to search page">Back to search</a>
+  </div>

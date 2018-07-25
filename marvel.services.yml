@@ -1,0 +1,4 @@
+services:
+  marvel.super_hero_search:
+    class: Drupal\marvel\SuperHeroSearch
+    arguments: ['@config.factory', '@http_client', '@datetime.time']

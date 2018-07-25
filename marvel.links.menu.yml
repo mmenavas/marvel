@@ -1,0 +1,7 @@
+marvel.marvel_settings_form:
+  title: 'Marvel Settings'
+  route_name: marvel.marvel_settings_form
+  description: 'Configure your Marvel API settings'
+  parent: system.admin_config_system
+  weight: 99
+

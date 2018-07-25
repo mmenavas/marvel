@@ -1,0 +1,42 @@
+<?php
+
+/**
+ * @file
+ * Contains marvel.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Component\Utility\Html;
+
+/**
+ * Implements hook_help().
+ */
+function marvel_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the marvel module.
+    case 'help.page.marvel':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('An app to display information about your favorite Marvel super heroes.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function marvel_theme() {
+  return [
+    'marvel_super_hero' => [
+      'variables' => [
+        'id' => NULL,
+        'name' => NULL,
+        'description' => NULL,
+        'thumbnail' => NULL,
+      ],
+    ],
+  ];
+}
+

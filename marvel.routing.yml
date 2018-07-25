@@ -1,0 +1,34 @@
+
+marvel.marvel_settings_form:
+  path: '/admin/config/marvel/settings'
+  defaults:
+    _form: '\Drupal\marvel\Form\SettingsForm'
+    _title: 'Marvel Settings'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+marvel.autocomplete:
+  path: '/marvel/autocomplete'
+  defaults:
+    _controller: '\Drupal\marvel\Controller\SuperHeroesController::autocomplete'
+    _format: json
+  requirements:
+    _permission: TRUE
+
+marvel.search:
+  path: '/marvel/search'
+  defaults:
+    _controller: '\Drupal\marvel\Controller\SuperHeroesController::search'
+    _title: 'Find Your Marvel Super Hero'
+  requirements:
+    _permission: TRUE
+
+marvel.show_super_hero:
+  path: '/marvel/show/{id}'
+  defaults:
+    _controller: '\Drupal\marvel\Controller\SuperHeroesController::show'
+  requirements:
+    _permission: TRUE
+
