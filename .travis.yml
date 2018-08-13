@@ -6,7 +6,7 @@ php:
 env:
   global:
     - MODULE_NAME='marvel'
-    - SIMPLETEST_BASE_URL='http://127.0.0.1:8080'
+    - SIMPLETEST_BASE_URL='http://localhost:8080'
     # Ignore Symfony's deprecation notices.
     - SYMFONY_DEPRECATIONS_HELPER=weak
 
@@ -35,7 +35,7 @@ install:
 
   # start a web server on port 8080, run in the background; wait for initialization
   # Credit: https://github.com/sonnym/travis-ci-drupal-module-example/blob/8.x-1.x/.travis.yml
-  - ./vendor/bin/drush runserver 127.0.0.1:8080 &
+  - ./vendor/bin/drush runserver localhost:8080 &
   - until netstat -an 2>/dev/null | grep '8080.*LISTEN'; do true; done
 
 script: cd web && ../vendor/bin/phpunit -c core/phpunit.xml.dist modules/$MODULE_NAME
