@@ -41,6 +41,13 @@ class SearchForm extends FormBase {
         'id' => 'marvel__super-hero-id',
       ],
     ];
+    $form['credit'] = [
+      '#type' => 'markup',
+      '#markup' => '<p><strong>' . $this->t('Note') . ':</strong> ' .
+        $this->t("The content displayed by this app is provided by ") .
+        '<a href="http://marvel.com" target="_blank" title="'. $this->t("Open Marvel's website") .
+        '">http://marvel.com</a>.</p>',
+    ];
     $form['actions'] = [
       '#type' => 'actions',
     ];

@@ -5,7 +5,7 @@ namespace Drupal\marvel;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\GuzzleException;
 use Drupal\Component\Datetime\TimeInterface;
 
 /**
@@ -148,7 +148,7 @@ class SuperHeroSearch implements SuperHeroSearchInterface {
 
       $response_body =  $response_raw->getBody()->getContents();
     }
-    catch (ClientException $exception) {
+    catch (GuzzleException $exception) {
       watchdog_exception('marvel', $exception);
     }
 

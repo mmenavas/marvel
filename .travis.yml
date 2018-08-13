@@ -1,0 +1,45 @@
+language: php
+
+php:
+  - '7.2'
+
+env:
+  global:
+    - MODULE_NAME='marvel'
+    - MARVEL_GATEWAY='https://gateway.marvel.com/v1/public'
+    - SIMPLETEST_BASE_URL='http://localhost:8080'
+    # Ignore Symfony's deprecation notices.
+    - SYMFONY_DEPRECATIONS_HELPER=weak
+
+mysql:
+  database: drupal
+  username: root
+  encoding: utf8
+
+before_install:
+  # Disable xdebug.
+  - phpenv config-rm xdebug.ini
+
+install:
+  # Download and install Drupal Composer.
+  - cd .. && composer create-project drupal-composer/drupal-project:8.x-dev drupal --stability dev --no-interaction
+  - cd drupal && composer install
+
+  # Create symlink to add Marvel module to drupal site.
+  - ln -s $TRAVIS_BUILD_DIR web/modules/$MODULE_NAME
+
+  # Install Drupal via `drush si`
+  - ./vendor/bin/drush --yes site-install standard --db-url="mysql://root@127.0.0.1/drupal"
+
+  # Enable Marvel module
+  - ./vendor/bin/drush en $MODULE_NAME
+  - ./vendor/bin/drush config:set marvel.settings gateway $MARVEL_GATEWAY -y
+  - ./vendor/bin/drush config:set marvel.settings public_key $MARVEL_PUBLIC_KEY -y
+  - ./vendor/bin/drush config:set marvel.settings private_key $MARVEL_PRIVATE_KEY -y
+
+  # start a web server on port 8080, run in the background; wait for initialization
+  # Credit: https://github.com/sonnym/travis-ci-drupal-module-example/blob/8.x-1.x/.travis.yml
+  - ./vendor/bin/drush runserver localhost:8080 &
+  - until netstat -an 2>/dev/null | grep '8080.*LISTEN'; do true; done
+
+script: cd web && ../vendor/bin/phpunit -c core/phpunit.xml.dist modules/$MODULE_NAME

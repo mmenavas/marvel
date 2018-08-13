@@ -23,16 +23,14 @@ class SearchSuperHeroPageTest extends BrowserTestBase {
    */
   protected function setUp() {
     parent::setUp();
-    $account = $this
-      ->drupalCreateUser(['administer marvel settings', 'access marvel app']);
-    $this
-      ->drupalLogin($account);
+    $account = $this->drupalCreateUser([
+      'administer marvel settings',
+      'access marvel app'
+    ]);
+    $this->drupalLogin($account);
   }
 
-  /**
-   * Tests super hero search page.
-   */
-  public function testSuperHeroSearchPage() {
+  public function testLoadSuperHeroSearchPage() {
 
     $assert = $this->assertSession();
 
@@ -45,6 +43,16 @@ class SearchSuperHeroPageTest extends BrowserTestBase {
     $assert->fieldExists('super_hero_name');
     $assert->buttonExists('Search');
     $assert->hiddenFieldExists('super_hero_id');
+  }
+
+  public function testInvalidSuperHeroId() {
+
+    $assert = $this->assertSession();
+
+    // Verify that page is loaded regardless of invalid id
+    $this->drupalGet('marvel/show/invalid-id');
+    $assert->statusCodeEquals(200);
+    $assert->pageTextContains('No results were found');
   }
 
 }
