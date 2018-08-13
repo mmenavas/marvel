@@ -6,6 +6,7 @@ php:
 env:
   global:
     - MODULE_NAME='marvel'
+    - MARVEL_GATEWAY='https://gateway.marvel.com/v1/public'
     - SIMPLETEST_BASE_URL='http://localhost:8080'
     # Ignore Symfony's deprecation notices.
     - SYMFONY_DEPRECATIONS_HELPER=weak
@@ -32,8 +33,9 @@ install:
 
   # Enable Marvel module
   - ./vendor/bin/drush en $MODULE_NAME
-  - ./vendor/bin/drush config:set marvel.settings public_key $MARVEL_PUBLIC_KEY
-  - ./vendor/bin/drush config:set marvel.settings private_key $MARVEL_PRIVATE_KEY
+  - ./vendor/bin/drush config:set marvel.settings gateway $MARVEL_GATEWAY -y
+  - ./vendor/bin/drush config:set marvel.settings public_key $MARVEL_PUBLIC_KEY -y
+  - ./vendor/bin/drush config:set marvel.settings private_key $MARVEL_PRIVATE_KEY -y
 
   # start a web server on port 8080, run in the background; wait for initialization
   # Credit: https://github.com/sonnym/travis-ci-drupal-module-example/blob/8.x-1.x/.travis.yml
