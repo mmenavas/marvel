@@ -27,12 +27,20 @@ class SearchSuperHeroPageTest extends BrowserTestBase {
       ->drupalCreateUser(['administer marvel settings', 'access marvel app']);
     $this
       ->drupalLogin($account);
+
+
+    // To test using real credentials, set environmental variables in your
+    // test environment (e.g. Travis CI).
+    if ($public_key = getenv('MARVEL_PUBLIC_KEY') &&
+        $private_key = getenv('MARVEL_PRIVATE_KEY')) {
+      $this->config('marvel.settings')
+        ->set('public_key', $public_key)
+        ->set('private_key', $private_key)
+        ->save();
+    }
   }
 
-  /**
-   * Tests super hero search page.
-   */
-  public function testSuperHeroSearchPage() {
+  public function testLoadSuperHeroSearchPage() {
 
     $assert = $this->assertSession();
 
@@ -47,4 +55,13 @@ class SearchSuperHeroPageTest extends BrowserTestBase {
     $assert->hiddenFieldExists('super_hero_id');
   }
 
+  public function testInvalidSuperHeroId() {
+
+    $assert = $this->assertSession();
+
+    // Verify that page is loaded regardless of invalid id
+    $this->drupalGet('marvel/show/invalid-id');
+    $assert->statusCodeEquals(200);
+    $assert->pageTextContains('No results were found');
+  }
 }

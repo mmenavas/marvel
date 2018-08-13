@@ -13,6 +13,10 @@ mysql:
   username: root
   encoding: utf8
 
+addons:
+  hosts:
+    - travis.mmenavas.site
+
 before_install:
   # Disable xdebug.
   - phpenv config-rm xdebug.ini
