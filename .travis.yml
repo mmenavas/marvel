@@ -6,8 +6,7 @@ php:
 env:
   global:
     - MODULE_NAME='marvel'
-    - DRUPAL_VERSION='8.5.6'
-    - DRUPAL_FILES_URL='https://ftp.drupal.org/files/projects'
+    - SIMPLETEST_BASE_URL='http://localhost'
 
 mysql:
   database: drupal
@@ -31,3 +30,5 @@ install:
 
   # Enable Marvel module
   - ./vendor/bin/drush en $MODULE_NAME
+
+  - cd web && ./vendor/bin/phpunit -c core/phpunit.xml.dist modules/custom/$MODULE_NAME
