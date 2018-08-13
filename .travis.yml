@@ -6,7 +6,7 @@ php:
 env:
   global:
     - MODULE_NAME='marvel'
-    - SIMPLETEST_BASE_URL='http://localhost'
+    - SIMPLETEST_BASE_URL='http://127.0.0.1:8080'
 
 mysql:
   database: drupal
@@ -31,6 +31,8 @@ install:
   # Enable Marvel module
   - ./vendor/bin/drush en $MODULE_NAME
 
-  # Run tests
-  - ./vendor/bin/drush status
-#  - cd web && ../vendor/bin/phpunit -c core/phpunit.xml.dist modules/$MODULE_NAME
+  # start a web server on port 8080, run in the background; wait for initialization
+  - ./vendor/bin/drush runserver 127.0.0.1:8080 &
+  - until netstat -an 2>/dev/null | grep '8080.*LISTEN'; do true; done
+
+script: cd web && ../vendor/bin/phpunit -c core/phpunit.xml.dist modules/$MODULE_NAME
