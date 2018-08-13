@@ -23,6 +23,10 @@ class SearchSuperHeroPageTest extends BrowserTestBase {
    */
   protected function setUp() {
     parent::setUp();
+    $account = $this
+      ->drupalCreateUser(['administer marvel settings', 'access marvel app']);
+    $this
+      ->drupalLogin($account);
   }
 
   /**

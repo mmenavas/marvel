@@ -57,16 +57,25 @@ class SuperHeroesController extends ControllerBase {
    *   Return Hello string.
    */
   public function show($id) {
+    $build = [
+      '#theme' => 'marvel_super_hero',
+      '#id' => '',
+      '#name' => '',
+      '#description' => '',
+      '#thumbnail' => '',
+    ];
+
     $marvel = \Drupal::service('marvel.super_hero_search');
     $data = $marvel->findById($id);
 
-    return [
-      '#theme' => 'marvel_super_hero',
-      '#id' => $data['id'],
-      '#name' => $data['name'],
-      '#description' => $data['description'],
-      '#thumbnail' => $data['thumbnail'],
-    ];
+    if (!empty($data)) {
+      $build['#id'] = $data['id'];
+      $build['#name'] = $data['name'];
+      $build['#description'] = $data['description'];
+      $build['#thumbnail'] = $data['thumbnail'];
+    }
+
+    return $build;
   }
 
 }

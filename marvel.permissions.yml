@@ -1,0 +1,6 @@
+access marvel app:
+  title: 'Access Marvel app'
+
+administer marvel settings:
+  title: 'Administer Marvel settings'
+  restrict access: true

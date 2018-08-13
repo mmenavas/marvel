@@ -137,6 +137,11 @@ class SuperHeroSearch implements SuperHeroSearchInterface {
     $data = [];
     $response_body = '';
 
+    // Check if URL is valid.
+    if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
+      return $data;
+    }
+
     try {
       $response_raw = $this->httpClient
         ->get($url, ['headers' => ['Accept' => '*/*']]);
