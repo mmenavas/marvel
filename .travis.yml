@@ -31,4 +31,4 @@ install:
   # Enable Marvel module
   - ./vendor/bin/drush en $MODULE_NAME
 
-  - cd web && ./vendor/bin/phpunit -c core/phpunit.xml.dist modules/custom/$MODULE_NAME
+  - cd web && ../vendor/bin/phpunit -c core/phpunit.xml.dist modules/custom/$MODULE_NAME
