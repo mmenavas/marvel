@@ -55,12 +55,4 @@ class SearchSuperHeroPageTest extends BrowserTestBase {
     $assert->pageTextContains('No results were found');
   }
 
-  public function testRealSuperHeroId() {
-
-    $assert = $this->assertSession();
-
-    $this->drupalGet('marvel/show/1009718');
-    $assert->statusCodeEquals(200);
-    $assert->pageTextContains('Wolverine');
-  }
 }
