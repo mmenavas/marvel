@@ -1,0 +1,15 @@
+
+{
+  "name": "mmenavas/marvel",
+  "type": "drupal-module",
+  "description": "This module allows your site to connect to Marvel Comics API so you can fetch and display data about your favorite characters.",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "https://github.com/mmenavas/marvel",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "https://github.com/mmenavas/marvel/issues",
+    "source": "https://github.com/mmenavas/marvel"
+  },
+  "require": { }
+}
