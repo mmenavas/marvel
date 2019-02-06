@@ -5,3 +5,10 @@ autocomplete:
   dependencies:
     - core/jquery
     - core/jquery.once
+marvel:
+  version: 1.x
+  css:
+    theme:
+      css/marvel.css: {}
+  js:
+    js/marvel.js: {}

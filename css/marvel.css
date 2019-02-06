@@ -1,0 +1,36 @@
+.cards {
+  padding: 0;
+  max-width: 960px;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+}
+.cards__item {
+  margin:0;
+  padding: 0;
+}
+.status-bar {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.hide {
+  display: none;
+}
+.card {
+  background-color: darkslategrey;
+  color: #fff;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  line-height: 200px;
+  font-size: 10rem;
+  height: 180px;
+  width: 180px;
+}
+.card--on {
+  background-color: #eee;
+}
+.card__image {
+  display: block;
+}

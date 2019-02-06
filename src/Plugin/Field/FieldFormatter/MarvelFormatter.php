@@ -89,6 +89,7 @@ class MarvelFormatter extends FormatterBase implements ContainerFactoryPluginInt
       '#markup' => "<div id='marvel-memory-game'>"
     ];
     $elements['#attached']['drupalSettings']['marvel'] = $characters;
+    $elements['#attached']['library'][] = 'marvel/marvel';
 
     return $elements;
   }
