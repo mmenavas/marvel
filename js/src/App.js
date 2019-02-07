@@ -28,7 +28,7 @@ class App extends Component {
     drupalSettings.marvel.forEach(function (character) {
       let card = {
         id: character.id,
-        image: character.thumbnail,
+        image: character.image,
         isOn: false,
         isClone: false
       }

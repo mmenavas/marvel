@@ -3,20 +3,20 @@
 namespace Drupal\Tests\marvel\Unit;
 
 use Drupal\Tests\UnitTestCase;
-use Drupal\marvel\SuperHeroSearch;
+use Drupal\marvel\MarvelSearch;
 
 /**
- * @coversDefaultClass \Drupal\marvel\SuperHeroSearch
+ * @coversDefaultClass \Drupal\marvel\MarvelSearch
  * @group marvel
  */
-class SuperHeroSearchTest extends UnitTestCase {
+class CharacterSearchTest extends UnitTestCase {
 
   /**
-   * The tested SuperHeroSearch
+   * The tested CharacterSearch
    *
-   * @var \Drupal\marvel\SuperHeroSearch
+   * @var \Drupal\marvel\MarvelSearch
    */
-  protected $superHeroSearch;
+  protected $characterSearch;
 
   /**
    * {@inheritdoc}
@@ -31,21 +31,21 @@ class SuperHeroSearchTest extends UnitTestCase {
     ]]);
     $http_client_mock = $this->createMock('\GuzzleHttp\ClientInterface');
     $time = $this->getMockBuilder('Drupal\Component\Datetime\TimeInterface')->getMock();
-    $this->superHeroSearch = new SuperHeroSearch($config_factory, $http_client_mock, $time);
+    $this->characterSearch = new MarvelSearch($config_factory, $http_client_mock, $time);
   }
 
   /**
-   * Tests search for super hero by name.
+   * Tests search for character by name.
    */
   public function testSearchMethods() {
     // Searching by name with an empty string should return an empty array.
     $empty_string = '';
-    $result = $this->superHeroSearch->searchByName($empty_string);
+    $result = $this->characterSearch->searchByName($empty_string);
     $this->assertTrue(is_array($result) && count($result) === 0);
 
     // Looking up by id with an empty string should return an empty array.
     $empty_string = '';
-    $result = $this->superHeroSearch->findById($empty_string);
+    $result = $this->characterSearch->findById($empty_string);
     $this->assertTrue(is_array($result) && count($result) === 0);
   }
 
@@ -53,12 +53,12 @@ class SuperHeroSearchTest extends UnitTestCase {
    * Tests authentication URL paramenters
    */
   public function testAuthenticationUrlParamenters() {
-    $url_queries = $this->superHeroSearch->getAuthenticationUrlParameters();
+    $url_queries = $this->characterSearch->getAuthenticationUrlParameters();
 
     // First character should be an ampersand.
     $this->assertTrue(strpos($url_queries, '&') === 0);
 
-    // timestamp should be present
+    // apikey should be present
     $this->assertTrue(strpos($url_queries, 'apikey=') > 0);
 
     // hash key query should be present.

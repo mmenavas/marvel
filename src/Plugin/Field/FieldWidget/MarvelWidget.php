@@ -54,7 +54,7 @@ class MarvelWidget extends WidgetBase {
 //    $element['character_name'] = [
       '#type' => 'textfield',
       '#title' => $this->t("Character name"),
-      '#description' => $this->t("Type the first few letters of your super hero's name and name suggestions will be shown"),
+      '#description' => $this->t("Type the first few letters of your character's name and suggestions will be shown"),
       '#weight' => 0,
       '#autocomplete_route_name' => 'marvel.autocomplete',
       '#default_value' => isset($item->character_name) ? $item->character_name : '',

@@ -8,12 +8,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 /**
- * Class SuperHeroesController.
+ * Class MarvelController.
  */
-class SuperHeroesController extends ControllerBase {
+class MarvelController extends ControllerBase {
 
   /**
-   * Returns JSON response for super hero autocomplete.
+   * Returns JSON response for character autocomplete.
    *
    * @param \Symfony\Component\HttpFoundation\Request $request
    *   The current request object containing the search string.
@@ -29,7 +29,7 @@ class SuperHeroesController extends ControllerBase {
       return new JsonResponse([]);
     }
 
-    $marvel = \Drupal::service('marvel.super_hero_search');
+    $marvel = \Drupal::service('marvel.marvel_search');
     $matches = $marvel->searchByName($name);
 
     return new JsonResponse($matches);
@@ -58,21 +58,21 @@ class SuperHeroesController extends ControllerBase {
    */
   public function show($id) {
     $build = [
-      '#theme' => 'marvel_super_hero',
+      '#theme' => 'marvel_character',
       '#id' => '',
       '#name' => '',
       '#description' => '',
-      '#thumbnail' => '',
+      '#image' => '',
     ];
 
-    $marvel = \Drupal::service('marvel.super_hero_search');
+    $marvel = \Drupal::service('marvel.marvel_search');
     $data = $marvel->findById($id);
 
     if (!empty($data)) {
       $build['#id'] = $data['id'];
       $build['#name'] = $data['name'];
       $build['#description'] = $data['description'];
-      $build['#thumbnail'] = $data['thumbnail'];
+      $build['#image'] = $data['image'];
     }
 
     return $build;

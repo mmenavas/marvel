@@ -12,14 +12,14 @@ use Drupal\Core\Field\FormatterBase;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\marvel\SuperHeroSearchInterface;
+use Drupal\marvel\MarvelSearchInterface;
 
 /**
  * Plugin implementation of the 'marvel_formatter' formatter.
  *
  * @FieldFormatter(
  *   id = "marvel_formatter",
- *   label = @Translation("Marvel formatter"),
+ *   label = @Translation("Default"),
  *   field_types = {
  *     "marvel"
  *   }
@@ -28,11 +28,11 @@ use Drupal\marvel\SuperHeroSearchInterface;
 class MarvelFormatter extends FormatterBase implements ContainerFactoryPluginInterface {
 
   /**
-   * SuperHeroSearch service.
+   * MarvelSearch service.
    *
-   * @var \Drupal\marvel\SuperHeroSearchInterface
+   * @var \Drupal\marvel\MarvelSearchInterface
    */
-  protected $superHeroSearch;
+  protected $marvelSearch;
 
   /**
    * Constructs a FormatterBase object.
@@ -51,12 +51,12 @@ class MarvelFormatter extends FormatterBase implements ContainerFactoryPluginInt
    *   The view mode.
    * @param array $third_party_settings
    *   Any third party settings.
-   * @param \Drupal\marvel\SuperHeroSearchInterface
-   *   SuperHeroSearch service.
+   * @param \Drupal\marvel\MarvelSearchInterface
+   *   MarvelSearch service.
    */
-  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, $label, $view_mode, array $third_party_settings, SuperHeroSearchInterface $super_hero_search) {
+  public function __construct($plugin_id, $plugin_definition, FieldDefinitionInterface $field_definition, array $settings, $label, $view_mode, array $third_party_settings, MarvelSearchInterface $marvel_search) {
     parent::__construct($plugin_id, $plugin_definition, $field_definition, $settings, $label, $view_mode, $third_party_settings);
-    $this->superHeroSearch = $super_hero_search;
+    $this->marvelSearch = $marvel_search;
   }
 
   /**
@@ -71,7 +71,7 @@ class MarvelFormatter extends FormatterBase implements ContainerFactoryPluginInt
       $configuration['label'],
       $configuration['view_mode'],
       $configuration['third_party_settings'],
-      $container->get('marvel.super_hero_search')
+      $container->get('marvel.marvel_search')
     );
   }
 
@@ -79,17 +79,18 @@ class MarvelFormatter extends FormatterBase implements ContainerFactoryPluginInt
    * {@inheritdoc}
    */
   public function viewElements(FieldItemListInterface $items, $langcode) {
-    $characters = [];
+    $elements = [];
 
     foreach ($items as $delta => $item) {
-      $characters[] = $this->superHeroSearch->findById($item->character_id);
+      $character = $this->marvelSearch->findById($item->character_id);
+      $elements[] = [
+        '#theme' => 'marvel_character',
+        '#id' => $character['id'],
+        '#name' => $character['name'],
+        '#description' => $character['description'],
+        '#image' => $character['image'],
+      ];
     }
-
-    $elements = [
-      '#markup' => "<div id='marvel-memory-game'>"
-    ];
-    $elements['#attached']['drupalSettings']['marvel'] = $characters;
-    $elements['#attached']['library'][] = 'marvel/marvel';
 
     return $elements;
   }

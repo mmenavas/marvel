@@ -17,7 +17,7 @@ function marvel_help($route_name, RouteMatchInterface $route_match) {
     case 'help.page.marvel':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('An app to display information about your favorite Marvel super heroes.') . '</p>';
+      $output .= '<p>' . t('An app to display information about your favorite Marvel characters.') . '</p>';
       return $output;
 
     default:
@@ -29,12 +29,12 @@ function marvel_help($route_name, RouteMatchInterface $route_match) {
  */
 function marvel_theme() {
   return [
-    'marvel_super_hero' => [
+    'marvel_character' => [
       'variables' => [
         'id' => NULL,
         'name' => NULL,
         'description' => NULL,
-        'thumbnail' => NULL,
+        'image' => NULL,
       ],
     ],
   ];

@@ -1,4 +1,4 @@
 services:
-  marvel.super_hero_search:
-    class: Drupal\marvel\SuperHeroSearch
+  marvel.marvel_search:
+    class: Drupal\marvel\MarvelSearch
     arguments: ['@config.factory', '@http_client', '@datetime.time']
