@@ -5,11 +5,11 @@ namespace Drupal\Tests\marvel\Functional;
 use Drupal\Tests\BrowserTestBase;
 
 /**
- * Test super hero search page
+ * Test character search page
  *
  * @group marvel
  */
-class SearchSuperHeroPageTest extends BrowserTestBase {
+class SearchCharacterPageTest extends BrowserTestBase {
 
   /**
    * Modules to enable.
@@ -30,22 +30,22 @@ class SearchSuperHeroPageTest extends BrowserTestBase {
     $this->drupalLogin($account);
   }
 
-  public function testLoadSuperHeroSearchPage() {
+  public function testLoadCharacterSearchPage() {
 
     $assert = $this->assertSession();
 
     // Verify the search form is loaded.
-    $this->drupalGet('marvel/search');
+    $this->drupalGet('marvel');
     $assert->statusCodeEquals(200);
-    $assert->pageTextContains('Find Your Marvel Super Hero');
+    $assert->pageTextContains('Find your favorite Marvel characters');
 
-    $assert->elementExists('css', 'form[action="/marvel/search"]');
-    $assert->fieldExists('super_hero_name');
+    $assert->elementExists('css', 'form[action="/marvel"]');
+    $assert->fieldExists('character_name');
     $assert->buttonExists('Search');
-    $assert->hiddenFieldExists('super_hero_id');
+    $assert->hiddenFieldExists('character_id');
   }
 
-  public function testInvalidSuperHeroId() {
+  public function testInvalidCharacterId() {
 
     $assert = $this->assertSession();
 

@@ -1,0 +1,36 @@
+#marvel-memory-game .cards {
+  padding: 0;
+  max-width: 960px;
+  margin: 0 auto;
+  list-style: none;
+  display: flex;
+  flex-flow: row wrap;
+}
+#marvel-memory-game .cards__item {
+  margin:0;
+  padding: 0;
+}
+#marvel-memory-game .status-bar {
+  text-align: center;
+  font-size: 1.5rem;
+}
+#marvel-memory-game .hide {
+  display: none;
+}
+#marvel-memory-game .card {
+  background-color: darkslategrey;
+  color: #fff;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  line-height: 200px;
+  font-size: 10rem;
+  height: 180px;
+  width: 180px;
+}
+#marvel-memory-game .card--on {
+  background-color: #eee;
+}
+#marvel-memory-game .card__image {
+  display: block;
+}

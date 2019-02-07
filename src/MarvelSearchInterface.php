@@ -3,12 +3,12 @@
 namespace Drupal\marvel;
 
 /**
- * Interface SuperHeroSearchInterface.
+ * Interface MarvelSearchInterface.
  */
-interface SuperHeroSearchInterface {
+interface MarvelSearchInterface {
 
   /**
-   * Provides a list of super heros whose name match the supplied keywords.
+   * Provides a list of characters whose name match the supplied keywords.
    *
    * @param string $name
    *   Name keyword.
@@ -19,13 +19,13 @@ interface SuperHeroSearchInterface {
   public function searchByName($name);
 
   /**
-   * Provides information about a specific super hero whose id is known.
+   * Provides information about a specific character whose id is known.
    *
    * @param string $id
-   *   Super hero id.
+   *   Character id.
    *
    * @return array
-   *   Associative array containing super hero details.
+   *   Associative array containing character details.
    */
   public function findById($id);
 

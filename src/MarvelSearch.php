@@ -9,9 +9,9 @@ use GuzzleHttp\Exception\GuzzleException;
 use Drupal\Component\Datetime\TimeInterface;
 
 /**
- * Class SuperHeroSearch.
+ * Class MarvelSearch.
  */
-class SuperHeroSearch implements SuperHeroSearchInterface {
+class MarvelSearch implements MarvelSearchInterface {
 
   /**
    * The Marvel settings.
@@ -35,7 +35,7 @@ class SuperHeroSearch implements SuperHeroSearchInterface {
   protected $time;
 
   /**
-   * Constructs a SuperHeroSearch object.
+   * Constructs a MarvelSearch object.
    *
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    *   The config factory.
@@ -57,7 +57,7 @@ class SuperHeroSearch implements SuperHeroSearchInterface {
    *   Service container.
    *
    * @return static
-   *   An instance of SuperHeroSearch.
+   *   An instance of MarvelSearch.
    */
   public static function create(ContainerInterface $container) {
     return new static(
@@ -121,7 +121,9 @@ class SuperHeroSearch implements SuperHeroSearchInterface {
     $info['name'] = !empty($data['results'][0]['name']) ? $data['results'][0]['name'] : '';
     $info['description'] = !empty($data['results'][0]['description']) ? $data['results'][0]['description'] : '';
     $info['thumbnail'] = !empty($data['results'][0]['thumbnail']['path'] && $data['results'][0]['thumbnail']['extension']) ?
-      $data['results'][0]['thumbnail']['path'] . '.' . $data['results'][0]['thumbnail']['extension'] : '';
+      $data['results'][0]['thumbnail']['path'] . '/standard_medium.' . $data['results'][0]['thumbnail']['extension'] : '';
+    $info['image'] = !empty($data['results'][0]['thumbnail']['path'] && $data['results'][0]['thumbnail']['extension']) ?
+      $data['results'][0]['thumbnail']['path'] . '/standard_amazing.' . $data['results'][0]['thumbnail']['extension'] : '';
 
     return $info;
   }

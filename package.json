@@ -1,0 +1,36 @@
+{
+  "name": "marvel",
+  "version": "1.0.0",
+  "description": "This module allows your site to connect to Marvel Comics API so you can fetch and display data about your favorite characters.",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --mode production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmenavas/marvel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmenavas/marvel/issues"
+  },
+  "homepage": "https://github.com/mmenavas/marvel#readme",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "webpack": "^4.29.1",
+    "webpack-cli": "^3.2.3"
+  }
+}

@@ -12,23 +12,23 @@ marvel.marvel_settings_form:
 marvel.autocomplete:
   path: '/marvel/autocomplete'
   defaults:
-    _controller: '\Drupal\marvel\Controller\SuperHeroesController::autocomplete'
+    _controller: '\Drupal\marvel\Controller\MarvelController::autocomplete'
     _format: json
   requirements:
     _permission: 'access marvel app'
 
 marvel.search:
-  path: '/marvel/search'
+  path: '/marvel'
   defaults:
-    _controller: '\Drupal\marvel\Controller\SuperHeroesController::search'
-    _title: 'Find Your Marvel Super Hero'
+    _controller: '\Drupal\marvel\Controller\MarvelController::search'
+    _title: 'Find your favorite Marvel characters'
   requirements:
     _permission: 'access marvel app'
 
-marvel.show_super_hero:
+marvel.show_character:
   path: '/marvel/show/{id}'
   defaults:
-    _controller: '\Drupal\marvel\Controller\SuperHeroesController::show'
+    _controller: '\Drupal\marvel\Controller\MarvelController::show'
   requirements:
     _permission: 'access marvel app'
 
