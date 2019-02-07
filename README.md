@@ -4,7 +4,8 @@ This module allows your site to connect to Marvel Comics API so you can fetch an
 Usage:
 - Install module.
 - Configure API keys at `/admin/config/marvel/settings`.
-- Go to `marvel` and find your favorite Marvel characters.
+- Go to `/marvel` and find your favorite Marvel characters.
+- Or create a content type and add a Marvel field to it. Then enable the Memory Game formatter.
 
 TODO:
 - ~~Rename SuperheroSearch to MarvelSearch.~~
