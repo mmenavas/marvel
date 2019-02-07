@@ -21,7 +21,7 @@ marvel.search:
   path: '/marvel'
   defaults:
     _controller: '\Drupal\marvel\Controller\MarvelController::search'
-    _title: 'Find Your favorite Marvel characters'
+    _title: 'Find your favorite Marvel characters'
   requirements:
     _permission: 'access marvel app'
 

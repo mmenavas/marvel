@@ -35,11 +35,11 @@ class SearchCharacterPageTest extends BrowserTestBase {
     $assert = $this->assertSession();
 
     // Verify the search form is loaded.
-    $this->drupalGet('marvel/search');
+    $this->drupalGet('marvel');
     $assert->statusCodeEquals(200);
-    $assert->pageTextContains('Find Your Marvel Character');
+    $assert->pageTextContains('Find your favorite Marvel characters');
 
-    $assert->elementExists('css', 'form[action="/marvel/search"]');
+    $assert->elementExists('css', 'form[action="/marvel"]');
     $assert->fieldExists('character_name');
     $assert->buttonExists('Search');
     $assert->hiddenFieldExists('character_id');
