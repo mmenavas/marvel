@@ -1,5 +1,12 @@
 ## Marvel - Drupal 8 module
-This module allows your site to connect to Marvel Comics API so you can fetch and display data about your favorite characters.
+This module allows your site to connect to Marvel Comics API so you can fetch and display data about your favorite characters. Additionally, you may create memory games with your favorite Marvel characters.
+
+### Features
+- Custom page to search for Marvel characters.
+- Custom field type.
+- Custom autocomplete widget to find characters by name.
+- Custom formatter to display basic data about characters.
+- Custom formatter powered by React to load memory game. 
 
 ### Prerequisite:
 - Create an Marvel developer account and get API keys from https://developer.marvel.com/
