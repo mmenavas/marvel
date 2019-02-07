@@ -5,6 +5,7 @@ autocomplete:
   dependencies:
     - core/jquery
     - core/jquery.once
+    - core/drupal
 marvel:
   version: 1.x
   css:
@@ -12,3 +13,6 @@ marvel:
       css/marvel.css: {}
   js:
     js/marvel.js: {}
+  dependencies:
+    - core/drupalSettings
+
