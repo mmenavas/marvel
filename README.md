@@ -1,6 +1,9 @@
 ## Marvel - Drupal 8 module
 This module allows your site to connect to Marvel Comics API so you can fetch and display data about your favorite characters.
 
+Prerequisite:
+- Create an Marvel developer account and get API keys from https://developer.marvel.com/
+
 Usage:
 - Install module.
 - Configure API keys at `/admin/config/marvel/settings`.
@@ -14,3 +17,5 @@ TODO:
 - ~~Create a Memory Game formatter to load the React game.~~
 - Add more test coverage.
 
+Demo site:
+http://drupal-242006-744060.cloudwaysapps.com/
