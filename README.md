@@ -17,9 +17,6 @@ This module allows your site to connect to Marvel Comics API so you can fetch an
 - Go to `/marvel` and find your favorite Marvel characters.
 - Or create a content type and add a Marvel field to it. Then enable the Memory Game formatter.
 
-### Demo site:
-http://drupal-242006-744060.cloudwaysapps.com/
-
 ### TODO:
 - ~~Rename SuperheroSearch to MarvelSearch.~~
 - ~~Rename Marvel formatter to MarvelMemoryGame.~~
