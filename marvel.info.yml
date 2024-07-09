@@ -2,4 +2,4 @@ name: Marvel
 type: module
 description: A module that connects to Marvel API to display data about your favorite characters.
 package: Games
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^10

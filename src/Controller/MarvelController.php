@@ -39,8 +39,8 @@ class MarvelController extends ControllerBase {
   /**
    * Loads search form.
    *
-   * @return string
-   *   Return Hello string.
+   * @return array
+   *   Returns form as renderable array.
    */
   public function search() {
     $search_form = \Drupal::formBuilder()->getForm('Drupal\marvel\Form\SearchForm');
@@ -51,10 +51,10 @@ class MarvelController extends ControllerBase {
   }
 
   /**
-   * Show.
+   * Show Marvel character.
    *
-   * @return string
-   *   Return Hello string.
+   * @return array
+   *   Return render array to display a Marvel character.
    */
   public function show($id) {
     $build = [

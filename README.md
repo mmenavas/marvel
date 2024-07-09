@@ -18,8 +18,6 @@ This module allows your site to connect to Marvel Comics API so you can fetch an
 - Or create a content type and add a Marvel field to it. Then enable the Memory Game formatter.
 
 ### TODO:
-- ~~Rename SuperheroSearch to MarvelSearch.~~
-- ~~Rename Marvel formatter to MarvelMemoryGame.~~
-- ~~Make new formatter called Default and display characters using the 'marvel_character' theme hook.~~
-- ~~Create a Memory Game formatter to load the React game.~~
-- Add more test coverage.
+- Add thumbnail on autocomplete suggestions.
+- Cache images to improve image loading.
+- Update tests to be compatible with newer version of PHPUnit.
